@@ -23,9 +23,7 @@ mainForm.button.oncommand = function(id,event){
 		+";CREATE USER qcloud_"+mainForm.edit.text+"_"+i+ " IDENTIFIED BY '"+ mainForm.edit.text+"';  "	
 		+"grant all privileges on qcloud_"+mainForm.edit.text+"_"+i+ ".* to qcloud_"+mainForm.edit.text+"_"+i+ "@'%' identified by '"+mainForm.edit.text+"'; "
 		mainForm.edit3.appendText(sql)
-		sql2= "revoke all PRIVILEGES on qcloud_"+mainForm.edit.text+"_"+i+ ".* from qcloud_"+mainForm.edit.text+"_"+i+ "@'%';DROP USER 'qcloud_"+mainForm.edit.text+"_"+i+ " '@'%';DROP DATABASE 'qcloud_"+mainForm.edit.text+"_"+i+ " '"
-		string.save("/保存内容.sql",sql,true)
-		string.save("/删除用户及库.sql",sql2,true)
+		string.save("/创建数据库.sql",sql,true)
 	}
 	
 	
