@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project ver="10" name="腾讯云+校园 MySQL命令生成工具" libEmbed="true" icon="res\icon.ico" ui="win" output="腾讯云+校园 MySQL命令生成工具.exe" CompanyName="白宦成" FileDescription="腾讯云+校园 MySQL命令生成工具" LegalCopyright="Copyright (C) 白宦成 2016" ProductName="腾讯云+校园 MySQL命令生成工具" InternalName="腾讯云+校园 MySQL命令生成工具" FileVersion="0.0.0.07" ProductVersion="0.0.0.07" publishDir="/Publish/" dstrip="true">
+	<file name="main.aardio" path="main.aardio" comment="main.aardio"/>
+	<folder name="资源文件" path="res" embed="true">
+		<file name="icon.ico" path="res\icon.ico" comment="res\icon.ico"/>
+	</folder>
+	<folder name="form" path="form" comment="目录" embed="false">
+		<file name="about.aardio" path="form\about.aardio" comment="form\about.aardio"/>
+	</folder>
+</project>

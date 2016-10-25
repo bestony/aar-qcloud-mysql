@@ -1,0 +1,14 @@
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text="关于作者";right=556;bottom=325;mode="child";parent=...)
+winform.add(
+picturebox={cls="picturebox";left=47;top=67;right=227;bottom=243;image=$"C:\Users\白宦成\Desktop\qrcode_for_gh_cfbed9826426_258.jpg";z=1};
+static={cls="static";text="白宦成";left=291;top=65;right=420;bottom=103;center=1;font=LOGFONT(h=-24);transparent=1;z=2};
+static2={cls="static";text="GitHub:@Bestony
+Mail:xiqingongzi@gmail.com";left=294;top=116;right=539;bottom=208;font=LOGFONT(h=-16);transparent=1;z=3}
+)
+/*}}*/
+
+winform.show() 
+win.loopMessage();
+return winform;

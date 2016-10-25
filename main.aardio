@@ -1,0 +1,54 @@
+import win.ui;
+import win.ui.menu;
+import string;
+/*DSG{{*/
+mainForm = win.form(text="腾讯云+校园 MySQL 工具";right=650;bottom=530;border="thin";max=false;min=false)
+mainForm.add(
+button={cls="button";text="生成";left=507;top=17;right=592;bottom=49;z=4};
+edit={cls="edit";left=129;top=24;right=317;bottom=43;edge=1;multiline=1;z=2};
+edit2={cls="edit";text="5";left=381;top=23;right=458;bottom=42;edge=1;multiline=1;z=3};
+edit3={cls="edit";left=30;top=61;right=617;bottom=426;autohscroll=false;edge=1;multiline=1;readonly=1;z=5};
+static={cls="static";text="数据库名:Qcloud_";left=31;top=28;right=132;bottom=43;notify=1;transparent=1;z=1};
+static2={cls="static";text="个数";left=349;top=25;right=387;bottom=51;transparent=1;z=6};
+static3={cls="static";text="工具使用说明：
+在左侧输入框填写你们的特定标识符，修改右侧的个数，点击生成可以生成SQL语句，粘贴到PHPMYADMIN中即可生成对应用户。
+左侧的标识符就是用户的密码，比如你的标识符为admin,生成的用户为qcloud_admin_1 ，密码为admin，默认可在所有IP链接。";left=31;top=444;right=607;bottom=515;transparent=1;z=7}
+)
+/*}}*/
+
+mainForm.button.oncommand = function(id,event){
+	
+	for(i=1;mainForm.edit2.text;1){
+		sql= "create database qcloud_"+mainForm.edit.text+"_"+i
+		+";CREATE USER qcloud_"+mainForm.edit.text+"_"+i+ " IDENTIFIED BY '"+ mainForm.edit.text+"';  "	
+		+"grant all privileges on qcloud_"+mainForm.edit.text+"_"+i+ ".* to qcloud_"+mainForm.edit.text+"_"+i+ "@'%' identified by '"+mainForm.edit.text+"'; "
+		mainForm.edit3.appendText(sql)
+		sql2= "revoke all PRIVILEGES on qcloud_"+mainForm.edit.text+"_"+i+ ".* from qcloud_"+mainForm.edit.text+"_"+i+ "@'%';DROP USER 'qcloud_"+mainForm.edit.text+"_"+i+ " '@'%';DROP DATABASE 'qcloud_"+mainForm.edit.text+"_"+i+ " '"
+		string.save("/保存内容.sql",sql,true)
+		string.save("/删除用户及库.sql",sql2,true)
+	}
+	
+	
+}
+import process;
+mainForm.popmenu = win.ui.popmenu(mainForm);//创建弹出菜单
+mainForm.popmenu.add('&打开腾讯云控制台',function(id){
+	process.execute("https://console.qcloud.com/")
+	
+});
+mainForm.popmenu.add();//分隔线
+mainForm.popmenu.add('&退出',function(id){ mainForm.close() })
+
+mainForm.newMenu = win.ui.popmenu(mainForm);
+mainForm.newMenu.add('&关于',function(id){
+	
+mainForm.msgbox("Github:@Bestony
+Mail:xiqingongzi@gmail.com
+微信公众号：猿味","开发者:白宦成")
+});
+
+var menu = win.ui.menu(mainForm);//创建主菜单
+menu.add('菜单',mainForm.popmenu);
+menu.add('关于',mainForm.newMenu);
+mainForm.show() 
+return win.loopMessage(); 
